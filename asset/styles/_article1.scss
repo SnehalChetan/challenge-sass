@@ -1,0 +1,58 @@
+/*Make one mixin for the 3 lines of the box-shadow styling.*/
+@mixin boxShadow {
+    -webkit-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+    -moz-box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+    box-shadow: 10px 10px 19px -4px rgba(255, 255, 255, 0.75);
+    
+}
+/* Make the general padding the same everywhere with one variable. */
+$padding-general: 8px;
+$text-align-variable:center;
+
+article {
+    display: flex;
+    flex-wrap: wrap;
+    
+    section {
+    /* including mixin function*/
+        @include boxShadow();
+        flex-grow: 1;
+        flex-basis: 45%;
+        border: 1px silver solid;
+        padding: calc(2 * #{$padding-general});
+        margin: 16px;
+        clear: both;
+        overflow: auto;
+        box-sizing: border-box;
+        #selling-points {
+            flex-grow: 2;
+            flex-basis: 100%;
+        }
+    }
+
+    code {
+        background: #000;
+        border: 1px solid #ddd;
+        color: #666;
+        page-break-inside: avoid;
+        font-family: monospace;
+        font-size: 15px;
+        line-height: 1.6;
+        margin-bottom: 1.6em;
+        max-width: 100%;
+        overflow: auto;
+        padding: 1em 1.5em;
+        display: block;
+        word-wrap: break-word;
+        &::before{
+            float: left;
+            width: 40%;
+        }
+        &:after{
+            float: right;
+            width: 40%;
+        }
+    }
+
+
+}
